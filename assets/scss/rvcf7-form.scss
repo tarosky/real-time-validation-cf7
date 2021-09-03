@@ -1,0 +1,66 @@
+.wpcf7 {
+	--cf7-primary: #00a0d2;
+	--cf7-invalid: #d91828;
+	--cf7-invalid-bg: #ffd9db;
+	--cf7-invalid-text: #d91828;
+	--cf7-success: #46b450;
+	--cf7-warning: #ffb900;
+	--cf7-orange: #f56e28;
+	--cf7-muted: #fbfbfc;
+	--cf7-gray: #23282d;
+	--cf7-white: #fff;
+
+	&-not-valid-tip {
+		display: none;
+		color: var(--cf7-invalid-text);
+	}
+
+	input#{&}-not-valid,
+	select#{&}-not-valid,
+	textarea#{&}-not-valid,
+	textarea:invalid,
+	input:invalid,
+	select:invalid {
+		background-color: var(--cf7-invalid-bg);
+	}
+
+	&-not-valid,
+	textarea:invalid,
+	input:invalid,
+	select:invalid {
+		~ .wpcf7-not-valid-tip {
+			display: block;
+		}
+	}
+
+	// Override style.
+	form .wpcf7-response-output {
+		border-color: var(--cf7-primary);
+	}
+
+	form.sent .wpcf7-response-output {
+		border-color: var(--cf7-success); /* Green */
+	}
+
+	form.failed .wpcf7-response-output,
+	form.aborted .wpcf7-response-output {
+		border-color: var(--cf7-invalid);
+	}
+
+	form.spam .wpcf7-response-output {
+		border-color: var(--cf7-orange);
+	}
+
+	form.invalid .wpcf7-response-output,
+	form.unaccepted .wpcf7-response-output {
+		border-color: var(--cf7-warning);
+	}
+
+	.ajax-loader {
+		background-color: var(--cf7-gray);
+
+		&::before {
+			background-color: var(--cf7-muted);
+		}
+	}
+}
